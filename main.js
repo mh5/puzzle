@@ -230,6 +230,6 @@ function check_answer() {
 		}
 	}
 
-	document.getElementById("status").innerHTML = "YOU GAVE UP!!!";
+	document.getElementById("status").innerHTML = "Correct answer!";
 };
 
