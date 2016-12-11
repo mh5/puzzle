@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!-- Copyright © 2016 M. Helmy Hemeda. -->
+
+<html lang="en-US">
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<script src="main.js"></script> 
+		<title>Will you crack the code?</title>
+	</head>
+
+	<body>
+		<h3>Can you crack the code? We will see.</h3>
+		<table id="hints" border="1">
+		</table>
+
+		<table>
+			<tr>
+				<td> <p> The code </p> </td>
+				<td><input type="text" max_length="1" size="1" placeholder="?" style="width: 15px" id="digit0" onChange="check_answer()" onKeyUp="check_answer()"/></td>
+				<td><input type="text" max_length="1" size="1" placeholder="?" style="width: 15px" id="digit1" onChange="check_answer()" onKeyUp="check_answer()"/></td>
+				<td><input type="text" max_length="1" size="1" placeholder="?" style="width: 15px" id="digit2" onChange="check_answer()" onKeyUp="check_answer()"/></td>
+			</tr>
+		</table>
+		
+		<button onClick="giveup()">I give up.</button>
+		<button onClick="reload_hints()">Another!</button>
+
+		<p id="status"></p>
+
+		<script>
+			reload_hints();
+		</script>
+	</body>
+</html>
