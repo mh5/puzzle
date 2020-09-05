@@ -222,14 +222,55 @@ function check_answer() {
 		ans[i] = Number(ans[i]);
 	}
 
-	for(var c = 0; c < constraints.length; c++) {
+	if(check_triplet(ans)) {
+		document.getElementById("status").innerHTML = "Correct answer!";
+	}
+	else {
+		document.getElementById("status").innerHTML = "Wrong answer!";
+	}
+};
 
-		if(!constraints[c]["check"](ans, window.hints_list[c])) {
-			document.getElementById("status").innerHTML = "Wrong answer!";
-			return;
+var check_triplet = function(triplet) {
+	for(var c = 0; c < constraints.length; c++) {
+		if(!constraints[c]["check"](triplet, window.hints_list[c])) {
+			return false;
 		}
 	}
 
-	document.getElementById("status").innerHTML = "Correct answer!";
+	return true;
+};
+
+var bruteforce = function(limit) {
+	
+	var hits = 0;
+	for(var i=0; i < 1000; i++) {
+		var ans = [
+			parseInt((i % 1000) / 100),
+			parseInt((i % 100) / 10),
+			i % 10
+		];
+
+		if(check_triplet(ans)) {
+			hits++;
+
+			if(hits > limit) {
+				return false;
+			}
+		}
+	}
+
+	return true;
+};
+
+var generate_unique_problem = function() {
+
+	for(var i = 0; i < 1000; i++) {
+		reload_hints();
+
+		if(bruteforce(1)) {
+			console.log("Unique answer after " + (i + 1) + " tries");
+			break;
+		}
+	}
 };
 
